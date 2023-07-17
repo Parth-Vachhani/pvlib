@@ -46,16 +46,38 @@ modelchain = ModelChain(system, location)
 # clear_sky.plot(figsize=(16,9))
 # plt.show()
 
-tmy = pd.read_csv("pvlib_UMA_girls_hostel.csv",index_col=0)
+# tmy = pd.read_csv("pvlib_UMA_girls_hostel.csv",index_col=0)
 
-tmy.index = pd.to_datetime(tmy.index)
+# tmy.index = pd.to_datetime(tmy.index)
 
-modelchain.run_model(tmy)
+# modelchain.run_model(tmy)
+# modelchain.results.ac.plot(figsize=(16,9))
+# plt.show()
+
+# modelchain.results.ac.resample("M").sum().plot(figsize=(16,9))
+# plt.show()
+
+
+poa_data_2016 = pd.read_csv("poa_data_2016.csv", index_col=0)
+
+poa_data_2016.index = pd.to_datetime((poa_data_2016.index))
+
+modelchain.run_model_from_poa(poa_data_2016)
 modelchain.results.ac.plot(figsize=(16,9))
 plt.show()
 
-modelchain.results.ac.resample("M").sum().plot(figsize=(16,9))
-plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
